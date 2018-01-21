@@ -25,12 +25,12 @@ Vagrant.configure("2") do |config|
     # Install Python, SQLite and pip
     sudo apt-get install -y python3-dev sqlite python-pip
     # Upgrade pip to the latest version.
-    su do pip install --upgrade pip
+    sudo pip install --upgrade pip
     # Install and configure python virtualenvwrapper.
     sudo pip install virtualenvwrapper
     if ! grep -q VIRTUALENV_ALREADY_ADDED /home/ubuntu/.bashrc; then
         echo "# VIRTUALENV_ALREADY_ADDED" >> /home/ubuntu/.bashrc
-        echo "WORKON_HOME=~/.virtualenvs" >> /home/ubuntu/.bashrc
+        echo "export WORKON_HOME=~/.virtualenvs" >> /home/ubuntu/.bashrc
         echo "PROJECT_HOME=/vagrant" >> /home/ubuntu/.bashrc
         echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/ubuntu/.bashrc
     fi
